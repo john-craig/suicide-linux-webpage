@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require('express');
 var bodyParser = require('body-parser')
 var cors = require('cors')
@@ -12,6 +13,4 @@ app.use(cors())
 
 app.use('/command', commandRoutes)
 
-
-
-app.listen(8282);
+//app.listen(8282);

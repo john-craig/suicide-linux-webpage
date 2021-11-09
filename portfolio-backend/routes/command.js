@@ -7,9 +7,9 @@ const { NodeSSH } = require('node-ssh')
 const ssh = new NodeSSH()
 
 ssh.connect({
-  host: '172.17.0.2',
+  host: process.env.CONTAINER_IP,
   username: 'visitor',
-  privateKey: '/home/iranon/programming/by_project/portfolio/portfolio-container/visitor_id'
+  privateKey: '/usr/src/app/visitor_id'
 })
 
 router.post("/", function(req, res) {

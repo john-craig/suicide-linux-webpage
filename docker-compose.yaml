@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  linux:
+    build: ./portfolio-container/
+    volumes: ./portfolio-container/bash.bashrc:/home/visitor/.bashrc:ro
+  frontend:
+    build: ./portfolio-frontend
+    ports:
+      - 1234:1234
+  backend:
+    build: ./portfolio-backend
+    ports:
+      - 8282:8282
+    environment:
+      - CONTAINER_IP: linux
+    depends_on:
+      - linux
+  proxy:
+    container: nginx/latest
+    volumes: ./portfolio-proxy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
