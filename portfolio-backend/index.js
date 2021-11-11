@@ -13,4 +13,4 @@ app.use(cors())
 
 app.use('/command', commandRoutes)
 
-//app.listen(8282);
+app.listen(8282);

@@ -7,6 +7,7 @@ const API_URL="http://localhost:8282"
 export async function sendCommand(command){
   const url = API_URL + "/command"
   var response;
+  console.log(command)
 
   try {
     response = await fetch(url, {
@@ -19,9 +20,9 @@ export async function sendCommand(command){
       });
 
     response = await response.json()
-    console.log(response)
+    
   } catch(error) {
-
+    console.log(error)
   }
 
   return response;
