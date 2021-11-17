@@ -2,7 +2,7 @@ version: '3'
 
 services:
   linux:
-    build: ./portfolio-container/
+    build: ./portfolio-container
     volumes: 
      - ./portfolio-container/bash.bashrc:/home/visitor/.bashrc:ro
   frontend:
@@ -10,7 +10,7 @@ services:
     ports:
       - 1234:1234
     environment:
-      - BACKEND_IP=backend
+      BACKEND_IP: backend
     depends_on:
       - backend
   backend:
@@ -18,7 +18,7 @@ services:
     ports:
       - 8282:8282
     environment:
-      - CONTAINER_IP=linux
+      CONTAINER_IP: linux
     depends_on:
       - linux
   proxy:
