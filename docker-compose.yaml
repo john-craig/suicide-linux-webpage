@@ -6,7 +6,7 @@ services:
     volumes: 
      - ./portfolio-container/bash.bashrc:/home/visitor/.bashrc:ro
     ports:
-     - 22:22
+     - 24:22
   backend:
     build: ./portfolio-backend
     ports:
