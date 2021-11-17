@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
   linux:
@@ -11,9 +11,9 @@ services:
     build: ./portfolio-backend
     ports:
      - 8282:8282
-    environment:
-      CONTAINER_IP: linux
     depends_on:
+     - linux
+    volumes_from:
      - linux
   frontend:
     build: ./portfolio-frontend
