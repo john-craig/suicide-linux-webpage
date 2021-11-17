@@ -24,7 +24,8 @@ RUN service ssh start
 COPY visitor_id.pub /home/visitor/.ssh/authorized_keys
 
 #Create a volume for the user's bashrc
-VOLUME ["/home/visitor/.bashrc"]
+#VOLUME ["/home/visitor/.bashrc"]
+COPY bash.bashrc /home/visitor/.bashrc
 
 EXPOSE 22
 
