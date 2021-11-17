@@ -3,10 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var cors = require('cors')
 
-console.log("Container IP:", process.env.CONTAINER_IP);
-
-
-//var commandRoutes = require('./routes/command')
+var commandRoutes = require('./routes/command')
 
 var app = express();
 
@@ -14,6 +11,6 @@ var app = express();
 app.use(bodyParser.json());
 app.use(cors())
 
-//app.use('/command', commandRoutes)
+app.use('/command', commandRoutes)
 
 app.listen(8282);
