@@ -11,6 +11,8 @@ services:
     build: ./portfolio-backend
     ports:
      - 8282:8282
+    environment:
+      CONTAINER_IP: linux
     depends_on:
      - linux
   frontend:
