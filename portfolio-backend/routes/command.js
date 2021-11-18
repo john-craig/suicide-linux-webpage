@@ -8,7 +8,7 @@ const ssh = new NodeSSH()
 
 ssh.connect({
   host: "linux",
-//port: 24,
+//  port: 2028,
   username: 'visitor',
   privateKey: '/usr/src/app/visitor_id'
 })
