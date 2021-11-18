@@ -3,6 +3,8 @@ version: '3.9'
 services:
   linux:
     build: ./portfolio-container
+    ports:
+     - 22:22
 #   volumes: 
 #    - ./portfolio-container/bash.bashrc:/home/visitor/.bashrc:ro
   backend:
