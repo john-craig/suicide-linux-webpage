@@ -3,7 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var cors = require('cors')
 
-console.log("Container IP:", process.env.CONTAINER_IP)
+//console.log("Container IP:", process.env.CONTAINER_IP)
 
 var commandRoutes = require('./routes/command')
 

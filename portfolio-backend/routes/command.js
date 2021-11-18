@@ -7,7 +7,7 @@ const { NodeSSH } = require('node-ssh')
 const ssh = new NodeSSH()
 
 ssh.connect({
-  host: process.env.CONTAINER_IP,
+  host: "linux",
 //port: 24,
   username: 'visitor',
   privateKey: '/usr/src/app/visitor_id'
