@@ -5,8 +5,6 @@ services:
     build: ./portfolio-container
 #   volumes: 
 #    - ./portfolio-container/bash.bashrc:/home/visitor/.bashrc:ro
-    ports:
-     - 24:22
   backend:
     build: ./portfolio-backend
     ports:
