@@ -1,4 +1,5 @@
-const API_URL="http://localhost:8282"
+//const API_URL="http://localhost:8282"
+const API_URL="http://backend:8282"
 //const API_URL = process.env.BACKEND_IP + "8282";
 //const API_URL = "/api"
 
