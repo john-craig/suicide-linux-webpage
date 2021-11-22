@@ -12,9 +12,9 @@ ssh.connect({
   // port: 2022,
   username: 'visitor',
   privateKey: '/usr/src/app/visitor_id',
-  algorithms: {
-    serverHostKey: 'ecdsa-sha2-nistp256'
-  }
+  // algorithms: {
+  //   serverHostKey: 'ecdsa-sha2-nistp256'
+  // }
   // localPort: 2023
 }).then(ssh => {
   console.log("SSH Connection Status:", ssh.isConnected())

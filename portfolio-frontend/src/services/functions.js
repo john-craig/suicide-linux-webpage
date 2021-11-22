@@ -16,9 +16,12 @@ export async function sendCommand(command){
   try {
     response = await fetch(url, {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin':'*'
           // 'Content-Type': 'application/x-www-form-urlencoded',
+          
         },
         body: JSON.stringify(command) // body data type must match "Content-Type" header
       });
