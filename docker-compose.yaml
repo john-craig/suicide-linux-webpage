@@ -1,34 +1,40 @@
-version: '3.9'
+version: '3'
+
+networks:
+  service:
+    driver: bridge
+  exposer:
+    driver: bridge
+    internal: false
 
 services:
   linux:
     build: ./portfolio-container
-    expose:
-     - "22"
 #   volumes: 
 #    - ./portfolio-container/bash.bashrc:/home/visitor/.bashrc:ro
     networks:
-     - service
+      - service
   backend:
     build: ./portfolio-backend
-    expose:
-     - "8282"
+    ports:
+      - 8282:8282
     links:
-     - linux
+      - linux
     depends_on:
-     - linux
+      - linux
     networks:
-     - service
+      - service
+      - exposer
   frontend:
     build: ./portfolio-frontend
-    expose:
-      - "1234"
-    links:
-      - backend
+    ports:
+      - 1234:1234
     depends_on:
-     - backend
-    networks:
-     - service
+      - backend
+    # links:
+    #   - backend
+    # networks:
+    #   - service
   proxy:
     image: nginx:latest
     ports: 
@@ -39,14 +45,6 @@ services:
      - linux
      - backend
      - frontend
-    networks:
-     - service
-     - exposer
-
-networks:
-  service:
-    driver: bridge
-    internal: true
-  exposer:
-    driver: bridge
-    internal: false
+    # networks:
+    # #  - service
+    #  - exposer

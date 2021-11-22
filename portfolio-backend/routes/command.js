@@ -7,11 +7,19 @@ const { NodeSSH } = require('node-ssh')
 const ssh = new NodeSSH()
 
 ssh.connect({
+  //host: process.env.CONTAINER_IP,
   host: "linux",
-//  port: 2028,
+  // port: 2022,
   username: 'visitor',
-  privateKey: '/usr/src/app/visitor_id'
+  privateKey: '/usr/src/app/visitor_id',
+
+  // localPort: 2023
+}).then(ssh => {
+  console.log("SSH Connection Status:", ssh.isConnected())
 })
+
+//console.log("Container IP:", process.env.CONTAINER_IP)
+
 
 router.post("/", function(req, res) {
     const cmd = req.body.join(' ')
