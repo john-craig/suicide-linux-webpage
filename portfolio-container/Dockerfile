@@ -6,7 +6,7 @@ RUN apt -o Acquire::Max-FutureTime=86400 update && \
 
 
 # Configure the SSH daemon
-RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+#RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
 
 # Create the visitor user and configure their settings
 RUN useradd -rm -s /bin/bash -g root -G sudo -u 1000 visitor && \

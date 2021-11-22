@@ -11,7 +11,8 @@ ssh.connect({
   host: "linux",
   // port: 2022,
   username: 'visitor',
-  privateKey: '/usr/src/app/visitor_id',
+  password: 'visitor'
+  //privateKey: '/usr/src/app/visitor_id',
   // algorithms: {
   //   serverHostKey: 'ecdsa-sha2-nistp256'
   // }
