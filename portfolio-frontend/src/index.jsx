@@ -37,7 +37,7 @@ const Main = () => {
 
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
-          <AppBar />
+          {/* <AppBar /> */}
 
           <Router>
             <Switch>

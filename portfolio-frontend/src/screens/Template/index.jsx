@@ -21,7 +21,11 @@ const Template = () => {
           commandPassThrough={
             (cmd, stdout) => {
               sendCommand(cmd).then(result => {
-                stdout(result['stdout'])
+                var out = result['stdout'].split('\n')
+                out.splice(0,4)
+                out = out.join('\n')
+                console.log(out)
+                stdout(out)
               })
             }
           }
