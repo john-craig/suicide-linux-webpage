@@ -1,17 +1,21 @@
-const API_URL="http://localhost:8282"
+//const API_URL="http://localhost:8282"
 //const API_URL="http://backend:8282"
 //const API_URL = process.env.BACKEND_IP + "8282";
-//const API_URL = "/api"
+const API_URL = "/api"
 console.log("API URL: ", API_URL)
 
 /*
   Queue Functions
 */
 
-export async function sendCommand(command){
+export async function sendCommand(cmd, cwd){
   const url = API_URL + "/command"
   var response;
-  console.log(command)
+  
+  const commandObject = {
+    cmd: cmd,
+    cwd: cwd
+  }
 
   try {
     response = await fetch(url, {
@@ -23,7 +27,7 @@ export async function sendCommand(command){
           // 'Content-Type': 'application/x-www-form-urlencoded',
           
         },
-        body: JSON.stringify(command) // body data type must match "Content-Type" header
+        body: JSON.stringify(commandObject) // body data type must match "Content-Type" header
       });
 
     response = await response.json()

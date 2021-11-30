@@ -24,7 +24,6 @@ services:
       - linux
     networks:
       - service
-      - exposer
   frontend:
     build: ./portfolio-frontend
     ports:
@@ -33,8 +32,8 @@ services:
       - backend
     # links:
     #   - backend
-    # networks:
-    #   - service
+    networks:
+      - service
   proxy:
     image: nginx:latest
     ports: 
@@ -45,6 +44,6 @@ services:
      - linux
      - backend
      - frontend
-    # networks:
-    # #  - service
-    #  - exposer
+    networks:
+     - service
+     - exposer

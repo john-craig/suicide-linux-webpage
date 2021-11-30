@@ -5,7 +5,6 @@ const path = require('path')
 const { NodeSSH } = require('node-ssh')
 
 const ssh = new NodeSSH()
-var cwd = '/home/visitor/'
 
 ssh.connect({
   //host: process.env.CONTAINER_IP,
@@ -23,10 +22,15 @@ ssh.connect({
 })
 
 //console.log("Container IP:", process.env.CONTAINER_IP)
-
+router.get("/", function(req, res) {
+  res.send("Success")
+})
 
 router.post("/", function(req, res) {
-    const cmd = req.body.join(' ')
+  console.log(req.body)
+
+    const cmd = req.body['cmd'].join(' ')
+    const cwd = req.body['cwd']
 
     ssh.execCommand(cmd, { cwd: cwd, stream: 'stdout' }).then(function(result) {
         res.status(200).send(
@@ -36,21 +40,6 @@ router.post("/", function(req, res) {
           }
         )
     })
-
-    if (req.body[0] == 'cd'){
-      //absolute path
-      if (req.body[1].charAt(0) == '/'){
-        cwd = req.body[1]
-      } else if(req.body[1] == ".."){
-        var tmp = cwd.split('/')
-        tmp.pop()
-        cwd = tmp.join('/')
-      } else {
-        cwd = cwd + "/" + req.body[1]
-      }
-
-      console.log(cwd)
-    }
 })
 
 //export this router to use in our index.js
